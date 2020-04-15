@@ -1,24 +1,26 @@
+ class CurrentAccount extends Account{
 
-package bankingsystem;
-
-class CurrentAccount extends Account{
-
-	CurrentAccount(String name , float balance){
-		super(name , balance);
+	CurrentAccount(String name , float balance, String gender){
+		super(name , balance, gender);
 	}
-	public void changeInterest(float interest){
-		super.interest = interest;
+        @Override
+         void changeInterest(float i){
+		interest = i;
 	}
-	public void addInterest(int year){
+        @Override
+	 void addInterest(int year){
+          
 		for(int i = 1 ; i<=year ; i++){
-			super.balance = super.balance +super.balance*(super.interest/100);
+			 balance = balance + (balance * year * interest) / 100;
 		}
 	}
-	public float deposite(int amount){
-		super.balance = super.balance+amount;
+        @Override
+	 float deposite(int amount){
+		balance = balance+amount;
 		return balance;
 	}
-	public void withdraw(int amount){
-		super.balance = super.balance - amount;
+        @Override
+	 void withdraw(int amount){
+		balance = balance - amount;
 	}
 }
