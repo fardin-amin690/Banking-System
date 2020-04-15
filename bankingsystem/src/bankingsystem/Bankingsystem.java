@@ -5,21 +5,24 @@ public class Bankingsystem {
  static void createSavingsAccount(int accNum, String name, float balance, HashMap hm){
 	    SavingsAccount sa = new SavingsAccount(name , balance);
             hm.put(accNum,sa);
-        System.out.println("Savings Account Created successfully with account Number - " + accNum );
+            System.out.println(" Hello "+name);
+            System.out.println("Savings Account Created successfully with account Number - " + accNum );
+            System.out.println("Your Balance is now:" +balance);
 	}
 	static void createCurrentAccount(int accNum, String name, float balance, HashMap hm){
 		CurrentAccount cu = new CurrentAccount(name , balance);
 		hm.put(accNum,cu);
-        System.out.println("Current Account Created successfully with account Number - " + accNum );
+                System.out.println(" Hello "+name);
+                System.out.println("Current Account Created successfully with account Number - " + accNum );
+                System.out.println("Your Balance is now:" +balance);
 	}
    
     public static void main(String[] args) {
-     int x,am,o,ac,r,yr,s,accNum = 1100;
+     int x,am,o,rate,yr,s,r,accNum = 1100;
             float bal;
             String n;
             HashMap<String, SavingsAccount> sav = new HashMap<>();
             HashMap<String, CurrentAccount> cur = new HashMap<>();
-            createSavingsAccount(101,"n", 100.1f , sav);
             while (true){
                 try{
                 System.out.println("\nOptions:\n1)Create Account\n2)Change Interest Rate\n3) Add Interest \n4)Deposit Money");
@@ -55,9 +58,29 @@ public class Bankingsystem {
                         break;
 
                     case 2 : //Change Interest Rate
-                        System.out.print("\n Enter new interest rate : ");
-                        bal = input.nextFloat();
-                        sav.get(101).changeInterest(bal);
+                       System.out.print ("1)Savings Accout Rate \n 2)Current Account rate \n --->");
+                       x= input.nextInt();
+                       if(x==1){
+                            System.out.print("Enter account number: ");
+                            accNum= input.nextInt();
+                            System.out.print("Enter interest rate: ");
+                            rate= input.nextInt();
+                            sav.get(accNum).changeInterest(rate);
+                            System.out.print("Change interest rate successfully");
+                        break;
+                        }
+                        else if(x==2){
+                         System.out.print("Enter account number: ");
+                            accNum= input.nextInt();
+                            System.out.print("Enter interest rate: ");
+                            rate= input.nextInt();
+                            cur.get(accNum).changeInterest(rate);
+                            System.out.print("Change interest rate successfully");
+                        break;
+                        }
+                        else{
+                            System.out.println("You enter a worng option \n Please enter a Right option");
+                        }
                         break;
 
                     case 3 : //Update Balance after adding Interest
@@ -65,20 +88,20 @@ public class Bankingsystem {
                         x= input.nextInt();
                         if(x==1){
                             System.out.println("Enter Account number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.println("Enter year of interest : ");
                             yr = input.nextInt();
-                            sav.get(ac).addInterest(yr);
-                            System.out.print("\n Balance Updated Successfully\n New Balance - " + sav.get(ac).balance);
+                            sav.get(accNum).addInterest(yr);
+                            System.out.print("\n Balance Updated Successfully\n New Balance - " + sav.get(accNum).balance);
                             break;
                         }
                         else if(x==2){
                             System.out.println("Enter Account number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.println("Enter year of interest : ");
                             yr = input.nextInt();
-                            cur.get(ac).addInterest(yr);
-                            System.out.print("\n Balance Updated Successfully\n New Balance - " + cur.get(ac).balance);
+                            cur.get(accNum).addInterest(yr);
+                            System.out.print("\n Balance Updated Successfully\n New Balance - " + cur.get(accNum).balance);
                             break;
                         }
                         else{
@@ -90,20 +113,20 @@ public class Bankingsystem {
                         x= input.nextInt();
                         if (x==1){
                             System.out.print("\n Enter Account Number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.print("\n Enter Amount : ");
                             am = input.nextInt() ;
-                            sav.get(ac).deposite(am);
-                            System.out.print("\n Current Balance - " + sav.get(ac).balance);
+                            sav.get(accNum).deposite(am);
+                            System.out.print("\n Current Balance - " + sav.get(accNum).balance);
                             break;
                         }
                         else if(x==2){
                             System.out.print("\n Enter Account Number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.print("\n Enter Amount : ");
                             am = input.nextInt() ;
-                            cur.get(ac).deposite(am);
-                            System.out.print("\n Current Balance - " + cur.get(ac).balance);
+                            cur.get(accNum).deposite(am);
+                            System.out.print("\n Current Balance - " + cur.get(accNum).balance);
                             break;
                         }
                         else {
@@ -116,20 +139,20 @@ public class Bankingsystem {
                         x = input.nextInt();
                         if (x==1){
                             System.out.print("\n Enter Account Number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.print("\n Enter Amount : ");
                             am = input.nextInt();
-                            sav.get(ac).withdraw(am);
-                            System.out.print("\n Current Balance- " + sav.get(ac).balance);
+                            sav.get(accNum).withdraw(am);
+                            System.out.print("\n Current Balance- " + sav.get(accNum).balance);
                             break;
                         }
                         else if(x==2){
                             System.out.print("\n Enter Account Number : ");
-                            ac = input.nextInt();
+                            accNum = input.nextInt();
                             System.out.print("\n Enter Amount : ");
                             am = input.nextInt();
-                            cur.get(ac).withdraw(am);
-                            System.out.print("\n Current Balance - " + cur.get(ac).balance);
+                            cur.get(accNum).withdraw(am);
+                            System.out.print("\n Current Balance - " + cur.get(accNum).balance);
                             break;
                         }
                         else {
