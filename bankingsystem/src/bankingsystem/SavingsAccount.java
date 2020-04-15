@@ -1,30 +1,33 @@
-
-package bankingsystem;
-
 class SavingsAccount extends Account{
 
-	SavingsAccount(String name ,float balance){
-		super(name , balance);
+	SavingsAccount(String name ,float balance, String gender){
+		super(name , balance, gender);
 	}
-	public float deposite(int amount){
-		super.balance = super.balance + amount;
-		return balance;
+       
+        @Override
+	 void changeInterest(float i){
+		interest = i;
 	}
-	public void changeInterest(float interest){
-		super.interest = interest;
-	}
-	public void addInterest(int year){
-		for(int i = 1 ; i<=year ; i++){
-			super.balance = super.balance + super.balance*( super.interest/100);
+        @Override
+	 void addInterest(int year){
+          for(int i = 1 ; i<=year ; i++){
+			
+                        balance = balance + (balance * year * interest) / 100;
 		}
 	}
-	public void withdraw(int amount){
+        @Override
+	float deposite(int amount){
+	balance = balance + amount;
+		return balance;
+	}
+        @Override
+	 void withdraw(int amount){
 		if((super.balance-amount)>=100){
-			super.balance = super.balance-amount;
+			balance = balance-amount;
 		}
 		else{
 			System.out.println("Must have at least 100$ amount remaining after withdrawal \nEnter a smaller amount");
 		}
 	}
+         
 }
-
