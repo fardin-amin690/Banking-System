@@ -1,12 +1,11 @@
-
-package bankingsystem;
 abstract class Account{
-		String name;
+	String name,gender;
 	float balance;
-	static float interest = (float) 3.75f;
-	Account(String name , float balance){
+	float interest = (float)3.75;
+	Account(String name , float balance,String gender){
 		this.name = name;
 		this.balance = balance;
+                this.gender = gender;
 	}
 
 	abstract float deposite(int amount);
@@ -17,4 +16,3 @@ abstract class Account{
 
 	abstract void addInterest(int year);
 }
-
